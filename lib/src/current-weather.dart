@@ -7,7 +7,7 @@ class CurrentWeather {
   static String url =
       'https://api.openweathermap.org/data/2.5/weather?lat=55.5&lon=37.5&cnt=10&appid=';
   Coord coord;
-  List<Weather> weather;
+  List<WeatherAlpha> weather;
   String base;
   Main main;
   int visibility;
@@ -123,13 +123,13 @@ class Sys {
   });
 }
 
-class Weather {
+class WeatherAlpha {
   int id;
   String main;
   String description;
   String icon;
 
-  Weather({
+  WeatherAlpha({
     required this.id,
     required this.main,
     required this.description,

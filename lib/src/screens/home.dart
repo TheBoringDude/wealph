@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:wealph/src/current-weather.dart';
-import 'package:wealph/src/models/wealph.dart';
 import 'package:wealph/src/screens/settings.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wealph/src/widgets/home/currentWeather.dart';
 
 class Home extends StatefulWidget {
   Home({Key? key, required this.title}) : super(key: key);
@@ -47,20 +45,8 @@ class _HomeState extends State<Home> {
           title: Text(widget.title),
         ),
         body: Center(
-            child: Column(children: [
-          FutureBuilder<String>(
-              future: currentWeather,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Text(snapshot.data!);
-                } else if (snapshot.hasError) {
-                  return Text('${snapshot.error}');
-                }
-
-                return CircularProgressIndicator();
-              }),
-          Text(Provider.of<WealphModel>(context).token),
-        ])), // This trailing comma makes auto-formatting nicer for build methods.
+            child:
+                WealphCurrentWeather()), // This trailing comma makes auto-formatting nicer for build methods.
         drawer: Drawer(
             child: ListView(
           padding: EdgeInsets.zero,
